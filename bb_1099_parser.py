@@ -136,6 +136,7 @@ if __name__ == '__main__':
             filepath = subdir + os.sep + file
             if filepath.endswith(".pdf"):
                 file_name = filepath.split("\\")[-1]
-                output[file_name] = get_pdf_text(filepath)
-                print(output[file_name])
+                if "audit_trail" not in file_name:
+                    output[file_name] = get_pdf_text(filepath)
+                    print(output[file_name])
     export_as_csv(output, csv_path)
